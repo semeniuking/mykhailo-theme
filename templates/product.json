@@ -50,6 +50,17 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "related_products_yQ8aAj": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Related Products",
+            "heading_font_size": 18,
+            "heading_color": "#121212",
+            "margin_top": 8,
+            "margin_bottom": 8,
+            "show_buy_now": true
+          }
         }
       },
       "block_order": [
@@ -60,7 +71,8 @@
         "price",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "related_products_yQ8aAj"
       ],
       "settings": {
         "enable_sticky_info": true,
