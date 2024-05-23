@@ -1,0 +1,140 @@
+#related-products {
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.block-related-products {
+  &__heading {
+	text-align: center;
+	font-size: 18px;
+	text-transform: capitalize;
+	display: inline-block;
+	margin-bottom: 20px;
+	font-weight: 600;
+	width: 100%;
+  }
+
+  &__list {
+	padding-inline: 0;
+	display: flex;
+	gap: 20px
+  }
+
+  .swiper {
+	max-width: calc(100% - 60px);
+
+	.swiper-wrapper {
+	  padding-inline: 0;
+	}
+  }
+
+  &__slider-wrapper {
+	position: relative;
+  }
+
+  &__prev, &__next {
+	position: absolute;
+	top: calc(50% - 10px);
+	width: 16px;
+	height: 20px;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in-out;
+
+	&.swiper-button-disabled {
+	  opacity: 0.3;
+	  cursor: not-allowed;
+	}
+
+	svg {
+	  width: 16px;
+	  height: 20px;
+	}
+  }
+
+  &__prev {
+	left: 0;
+	right: auto;
+  }
+
+  &__next {
+	right: 0;
+	left: auto;
+  }
+
+  .related-products-item {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	height: auto;
+
+	.image-link {
+	  height: 150px;
+	  width: 100%;
+	  position: relative;
+	  overflow: hidden;
+	  background-color: #fff;
+	  @media screen and (min-width: 640px) and (max-width: 992px) {
+		height: 100px;
+	  }
+	  @media (any-hover: hover) {
+		&:hover{
+		  img{
+			transform: scale(1.05);
+		  }
+		}
+	  }
+	  img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		transition: transform 0.3s ease-in-out;
+	  }
+	}
+
+	.title {
+	  margin: 0;
+	  font-size: 14px;
+	  margin-bottom: auto;
+	  color: #000;
+	  font-weight: 600;
+	  text-decoration: none;
+	  @media (any-hover: hover) {
+	  	&:hover{
+		  text-decoration: underline;
+		}
+	  }
+	}
+
+	.product-form {
+	  margin: 0;
+	}
+
+	.button {
+	  padding-inline: 4px;
+	  padding-block: 10px;
+	  min-width: max-content;
+	  min-height: auto;
+	  width: 100%;
+	  border: 1px solid #000;
+	  font-size: 12px;
+	  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	  box-sizing: border-box;
+	  margin: 0;
+	  text-transform: capitalize;
+	  @media (any-hover: hover) {
+		&:hover {
+		  background-color: #fff;
+		  color: #000;
+		}
+	  }
+
+	  &:after {
+		display: none;
+	  }
+	}
+  }
+}

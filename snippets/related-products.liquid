@@ -1,0 +1,104 @@
+{% if product.metafields.product_info.related_products %}
+    {{ 'block-related-products.css' | asset_url | stylesheet_tag }}
+
+    <!-- check how many products are available -->
+    {%- liquid
+        assign relatedProducts = product.metafields.product_info.related_products.value
+        assign array_limit = 5
+        assign relatedProductsSize = 0
+        for product in relatedProducts
+            assign relatedProductsSize = relatedProductsSize | plus: 1
+        endfor
+    -%}
+    <div class="block-related-products" {{ block.shopify_attributes }}>
+        <p class="block-related-products__heading"
+           style="font-size: {{ block.settings.heading_font_size }}px; color: {{ block.settings.heading_color }};">{{ block.settings.heading }}</p>
+
+        {% if relatedProductsSize <= 3 %}
+
+            <ul class="block-related-products__list" id="related-products-{{ block.id }}">
+                {% for product in relatedProducts limit: array_limit %}
+                    {% if product.available == true %}
+                        <li class="related-products-item ">
+                            <a target="_blank" href="{{ product.url }}" class="image-link" aria-label="{{ product.title }}" title="{{ product.title }}">
+                                <img class="image" src="{{ product.images[0] | img_url: '200x' }}" alt="{{ product.title }}">
+                            </a>
+                            <a target="_blank" href="{{ product.url }}" class="title">{{ product.title }}</a>
+                            <span class="price">{{ product.price | money }}</span>
+                            {% if block.settings.show_buy_now %}
+                                {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, show_pickup_availability: true %}
+                            {% else %}
+                                <a target="_blank" href="{{ product.url }}" class="product-form__submit button button--full-width button--primary">
+                                    see more
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% elsif relatedProductsSize > 3 %}
+            <div class="block-related-products__slider-wrapper">
+                <div class="block-related-products__prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="39" fill="none" viewBox="0 0 22 39">
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20.233 2 2 19.5 20.233 37"></path>
+                    </svg>
+                </div>
+                <div class="swiper block-related-products__slider" id="related-products-{{ block.id }}">
+                    <ul class="swiper-wrapper">
+                        {% for product in relatedProducts limit: array_limit %}
+                            {% if product.available == true %}
+                                <li class="related-products-item swiper-slide">
+                                    <a target="_blank" href="{{ product.url }}" class="image-link" aria-label="{{ product.title }}" title="{{ product.title }}">
+                                        <img class="image" src="{{ product.images[0] | img_url: '200x' }}" alt="{{ product.title }}">
+                                    </a>
+                                    <a target="_blank" href="{{ product.url }}" class="title">{{ product.title }}</a>
+                                    <span class="price">{{ product.price | money }}</span>
+                                    {% if block.settings.show_buy_now %}
+                                        {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, show_pickup_availability: true %}
+                                    {% else %}
+                                        <a target="_blank" href="{{ product.url }}" class="product-form__submit button button--full-width button--primary">
+                                            see more
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="block-related-products__next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="39" fill="none" viewBox="0 0 22 39">
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M1.768 37 20 19.5 1.767 2"></path>
+                    </svg>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+		#related-products-{{ block.id }} {
+			margin-top: {{ block.settings.padding_top }};
+			margin-bottom: {{ block.settings.padding_bottom }};
+		}
+    </style>
+
+    {% if relatedProductsSize > 3 %}
+        <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+        {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                let relatedProductsSize = "{{ relatedProductsSize }}";
+
+                const aboutHotelSlider = document?.querySelector('.block-related-products__slider');
+                const swiper = new Swiper(aboutHotelSlider, {
+                    spaceBetween: 20,
+                    slidesPerView: 3,
+                    navigation: {
+                        prevEl: '.block-related-products__prev',
+                        nextEl: '.block-related-products__next',
+                    }
+                });
+            })
+        </script>
+    {% endif %}
+{% endif %}
