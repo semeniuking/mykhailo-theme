@@ -1,0 +1,272 @@
+.custom-popup {
+  position: fixed;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+	visibility: visible;
+	opacity: 1;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+
+	.custom-popup__wrapper {
+	  transform: translateY(0);
+	  opacity: 1;
+	  visibility: visible;
+	}
+  }
+
+  &__bg {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.25);
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+
+	&:empty {
+	  display: block;
+	}
+  }
+
+  &__wrapper {
+	margin-inline: 16px;
+	max-width: 1200px;
+	width: auto;
+	background-color: #fff;
+	padding: 40px;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 400px 1fr;
+	gap: 60px;
+	border-radius: 4px;
+	overflow: hidden;
+	transform: translateY(100px);
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s linear 50ms;
+
+	@media screen and (max-width: 992px) {
+	  grid-template-columns: 1fr;
+	  gap: 30px;
+	  padding: 48px 20px;
+	}
+  }
+
+  &__close {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	contain: content;
+	cursor: pointer;
+
+	svg {
+	  width: 20px;
+	  height: 20px;
+	}
+  }
+
+  &__image {
+	height: 100%;
+	object-fit: cover;
+	max-width: 100%;
+	width: 100%;
+	@media screen and (max-width: 992px) {
+	  max-height: 220px;
+	}
+	@media screen and (max-width: 576px) {
+	  display: none;
+	}
+  }
+
+  &__content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+  }
+
+  &__subheading {
+	font-size: 18px;
+	text-transform: uppercase;
+	color: coral;
+	margin-bottom: 10px;
+	display: inline-block;
+	@media screen and (max-width: 992px) {
+	  text-align: center;
+	  width: 100%;
+	}
+  }
+
+  &__heading {
+	font-size: 32px;
+	color: #000;
+	margin: 0;
+	@media screen and (max-width: 992px) {
+	  font-size: 28px;
+	  text-align: center;
+	}
+  }
+
+  &__product-list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	padding-block: 40px;
+	padding-left: 0;
+	list-style: none;
+	margin: 0;
+
+	@media screen and (max-width: 992px) {
+	  padding-block: 10px;
+	}
+  }
+
+  &__product-item {
+	gap: 30px;
+	list-style: none;
+	border: 1px solid grey;
+	border-radius: 4px;
+	width: 100%;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 130px auto;
+	grid-template-rows: 150px;
+	@media screen and (max-width: 576px) {
+	  grid-template-columns: 120px auto;
+	  gap: 10px;
+	}
+	@media screen and (max-width: 350px) {
+	  grid-template-columns: auto auto;
+	}
+
+
+	.image {
+	  object-fit: contain;
+	  background-color: #fff;
+	  width: 100%;
+	  height: 100%;
+	  @media screen and (max-width: 992px) {
+	  }
+	}
+
+	.content {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: flex-start;
+	  align-self: stretch;
+	  gap: 10px;
+	  padding-block: 12px;
+	  padding-right: 12px;
+	}
+
+	.sku {
+	  text-transform: uppercase;
+	  color: grey;
+	  font-size: 12px;
+	  display: inline-flex;
+	  gap: 5px;
+	  align-items: center;
+	}
+
+	.title {
+	  font-size: 16px;
+	  font-weight: 600;
+	  color: #000;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-decoration: none;
+	  margin: 0;
+	  @media (any-hover: hover) {
+		&:hover {
+		  text-decoration: underline;
+		}
+	  }
+	}
+
+	.price {
+	  font-weight: 600;
+	  color: coral;
+	  display: inline-flex;
+	  gap: 10px;
+	  margin: 0;
+
+	  .original-price {
+		color: grey;
+		font-weight: 400;
+		margin: 0;
+	  }
+
+	  .discounted-price {
+		margin: 0;
+	  }
+	}
+  }
+
+  &__form {
+	position: relative;
+	@media screen and (max-width: 768px) {
+	  width: 100%;
+	}
+
+	.button {
+	  svg {
+		width: 40px;
+		height: 40px;
+	  }
+
+	  position: relative;
+
+	  .loading-overlay__spinner {
+		position: absolute;
+		inset: 0;
+		z-index: 6;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: 1;
+		visibility: visible;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+		&.hidden {
+		  opacity: 0;
+		  visibility: hidden;
+		}
+
+		svg {
+		  width: 30px;
+		  height: 30px;
+
+		  circle {
+			stroke: #fff;
+		  }
+		}
+	  }
+	}
+  }
+
+  &__success-message {
+	font-size: 13px;
+	color: #228b22;
+	padding-block: 12px;
+	position: absolute;
+	bottom: calc(100% - 10px);
+	left: 0;
+  }
+}
