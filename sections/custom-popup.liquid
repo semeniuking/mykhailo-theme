@@ -1,6 +1,6 @@
-{{ "custom-popup.min.css" | asset_url | stylesheet_tag }}
-
 {% if section.settings.enable_popup %}
+    {{ "custom-popup.min.css" | asset_url | stylesheet_tag }}
+
     <div class="custom-popup">
         <div class="custom-popup__bg"></div>
         <div class="custom-popup__wrapper">
@@ -55,90 +55,90 @@
             </div>
         </div>
     </div>
-{% endif %}
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // a script that will allow you to display the Pop-up only once for each site visitor.
-        let oncePerCustomer = "{{ section.settings.once_per_customer }}";
-        let showDelay = Number("{{ section.settings.show_delay }}" * 1000);
-        let popup = document.querySelector('.custom-popup');
-        let popupClose = document.querySelector('.custom-popup__close');
-        let popupBG = document.querySelector('.custom-popup__bg');
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // a script that will allow you to display the Pop-up only once for each site visitor.
+            let oncePerCustomer = "{{ section.settings.once_per_customer }}";
+            let showDelay = Number("{{ section.settings.show_delay }}" * 1000);
+            let popup = document.querySelector('.custom-popup');
+            let popupClose = document.querySelector('.custom-popup__close');
+            let popupBG = document.querySelector('.custom-popup__bg');
 
-        // Check if the popup has been displayed before
-        if (oncePerCustomer === "true") {
-            if (!localStorage.getItem('popupDisplayed')) {
+            // Check if the popup has been displayed before
+            if (oncePerCustomer === "true") {
+                if (!localStorage.getItem('popupDisplayed')) {
+                    setTimeout(() => {
+                        popup.classList.add('active')
+                    }, showDelay)
+                    localStorage.setItem('popupDisplayed', 'true');
+                }
+            } else {
                 setTimeout(() => {
                     popup.classList.add('active')
                 }, showDelay)
-                localStorage.setItem('popupDisplayed', 'true');
             }
-        } else {
-            setTimeout(() => {
-                popup.classList.add('active')
-            }, showDelay)
-        }
 
-        // Add event listener to close via close button
-        popupClose.addEventListener('click', function () {
-            popup.classList.remove('active');
+            // Add event listener to close via close button
+            popupClose.addEventListener('click', function () {
+                popup.classList.remove('active');
 
-            if (oncePerCustomer === "true" && !localStorage.getItem('popupDisplayed')) {
-                localStorage.setItem('popupDisplayed', 'true');
-            }
-        });
-
-        // Add event listener to close via bg layout
-        popupBG.addEventListener('click', function () {
-            popup.classList.remove('active');
-
-            if (oncePerCustomer === "true" && !localStorage.getItem('popupDisplayed')) {
-                localStorage.setItem('popupDisplayed', 'true');
-            }
-        });
-
-        //add to cart script
-        document.querySelector(".custom-popup__form")?.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            let products = document.querySelectorAll('.custom-popup__product-item');
-            let formSubmit = document.querySelector('.custom-popup__form button[type="submit"]');
-            let successMessage = document.querySelector('.custom-popup__success-message');
-            let formData = {
-                'items': [{
-                    'id': products[0].dataset.variant,
-                    'quantity': 1
-                }, {
-                    'id': products[1].dataset.variant,
-                    'quantity': 1
-                }]
-            };
-
-            // Show loading spinner
-            const loadingOverlay = formSubmit.querySelector(".loading-overlay__spinner");
-            loadingOverlay.classList.remove("hidden");
-
-            // Add products to cart
-            await fetch(`${window.Shopify.routes.root}cart/add.js`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
+                if (oncePerCustomer === "true" && !localStorage.getItem('popupDisplayed')) {
+                    localStorage.setItem('popupDisplayed', 'true');
+                }
             });
 
-            // Get updated cart data
-            const res = await fetch("/cart.json");
-            const cart = await res.json()
-                .then(() => {
-                    loadingOverlay.classList.add("hidden");
-                    formSubmit.classList.add("added");
-                    successMessage.innerText = 'Two products successfully added!'
-                })
-            console.log(cart)
+            // Add event listener to close via bg layout
+            popupBG.addEventListener('click', function () {
+                popup.classList.remove('active');
+
+                if (oncePerCustomer === "true" && !localStorage.getItem('popupDisplayed')) {
+                    localStorage.setItem('popupDisplayed', 'true');
+                }
+            });
+
+            //add to cart script
+            document.querySelector(".custom-popup__form")?.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                let products = document.querySelectorAll('.custom-popup__product-item');
+                let formSubmit = document.querySelector('.custom-popup__form button[type="submit"]');
+                let successMessage = document.querySelector('.custom-popup__success-message');
+                let formData = {
+                    'items': [{
+                        'id': products[0].dataset.variant,
+                        'quantity': 1
+                    }, {
+                        'id': products[1].dataset.variant,
+                        'quantity': 1
+                    }]
+                };
+
+                // Show loading spinner
+                const loadingOverlay = formSubmit.querySelector(".loading-overlay__spinner");
+                loadingOverlay.classList.remove("hidden");
+
+                // Add products to cart
+                await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                // Get updated cart data
+                const res = await fetch("/cart.json");
+                const cart = await res.json()
+                    .then(() => {
+                        loadingOverlay.classList.add("hidden");
+                        formSubmit.classList.add("added");
+                        successMessage.innerText = 'Two products successfully added!'
+                    })
+                console.log(cart)
+            });
         });
-    });
-</script>
+    </script>
+{% endif %}
 
 {% schema %}
 {
