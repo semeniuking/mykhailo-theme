@@ -59,7 +59,7 @@
             "heading_color": "#121212",
             "margin_top": 8,
             "margin_bottom": 8,
-            "show_buy_now": true
+            "show_buy_now": false
           }
         }
       },
