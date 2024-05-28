@@ -57,7 +57,7 @@
             "heading": "Related Products",
             "heading_font_size": 18,
             "heading_color": "#121212",
-            "margin_top": 8,
+            "margin_top": 40,
             "margin_bottom": 8,
             "show_buy_now": true
           }
