@@ -1,0 +1,38 @@
+{
+  "name": "Popup",
+  "type": "custom.popup",
+  "sections": {
+    "custom-popup": {
+      "type": "custom-popup",
+      "blocks": {
+        "product_EjHFkF": {
+          "type": "product",
+          "settings": {
+            "product_item": "the-multi-location-snowboard"
+          }
+        },
+        "product_JyAxgb": {
+          "type": "product",
+          "settings": {
+            "product_item": "the-compare-at-price-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "product_EjHFkF",
+        "product_JyAxgb"
+      ],
+      "settings": {
+        "enable_popup": false,
+        "image": "shopify:\/\/shop_images\/m4dmein_ec009-d4f364dc2fc14affa036ce2d7c80a34a.jpg",
+        "subheading": "asdasd akshjdhkjas gd",
+        "title": "For Business or Ceremony",
+        "show_delay": 1,
+        "once_per_customer": false
+      }
+    }
+  },
+  "order": [
+    "custom-popup"
+  ]
+}

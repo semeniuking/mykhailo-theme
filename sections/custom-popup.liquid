@@ -100,19 +100,16 @@
             //add to cart script
             document.querySelector(".custom-popup__form")?.addEventListener("submit", async (e) => {
                 e.preventDefault();
-                let products = document.querySelectorAll('.custom-popup__product-item');
                 let formSubmit = document.querySelector('.custom-popup__form button[type="submit"]');
                 let successMessage = document.querySelector('.custom-popup__success-message');
-                let formData = {
-                    'items': [{
-                        'id': products[0].dataset.variant,
+                let products = document.querySelectorAll('.custom-popup__product-item');
+                let formData = {'items': []};
+                products.forEach((item) => {
+                    formData["items"].push({
+                        'id': `${item.getAttribute('data-variant')}`,
                         'quantity': 1
-                    }, {
-                        'id': products[1].dataset.variant,
-                        'quantity': 1
-                    }]
-                };
-
+                    })
+                })
                 // Show loading spinner
                 const loadingOverlay = formSubmit.querySelector(".loading-overlay__spinner");
                 loadingOverlay.classList.remove("hidden");
