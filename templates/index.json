@@ -54,6 +54,18 @@
     "timeline_section_38Bxz7": {
       "type": "timeline-section",
       "blocks": {
+        "title_6TpTpP": {
+          "type": "title",
+          "settings": {
+            "title": "What sets us apart"
+          }
+        },
+        "subtitle_kbQBMn": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.<\/p>"
+          }
+        },
         "timeline_item_iQCXGL": {
           "type": "timeline_item",
           "settings": {
@@ -84,6 +96,8 @@
         }
       },
       "block_order": [
+        "title_6TpTpP",
+        "subtitle_kbQBMn",
         "timeline_item_iQCXGL",
         "timeline_item_b7geCm",
         "timeline_item_6dXQ8Y",
@@ -91,8 +105,6 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/20220923_Heights_00726_copy_1.png",
-        "title": "What sets us apart",
-        "subtitle": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.<\/p>",
         "padding_top": 60,
         "padding_bottom": 60
       }
