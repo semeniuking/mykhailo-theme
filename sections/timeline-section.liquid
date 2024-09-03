@@ -1,0 +1,150 @@
+{{ "timeline-section.css" | asset_url | stylesheet_tag }}
+<script src={{ "ScrollMagic.min.js" | asset_url }}></script>
+<script src="{{ "timeline-section.js" | asset_url }}" defer></script>
+
+{%- style -%}
+    /* for the sake of design I'm adding this fonts*/
+    @font-face {
+    font-family: 'Athletics';
+    src:url('{{ 'Athletics-Medium.woff2' | asset_url }}') format('woff2'),
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    }
+
+
+    @font-face {
+    font-family: 'Athletics';
+    src:url('{{ 'Lato-Regular.woff2' | asset_url }}') format('woff2'),
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    }
+
+    .timeline {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+    .timeline {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    }
+{%- endstyle -%}
+<div class="timeline__wrapper page-width">
+    <div class="timeline__image">
+        {%- if section.settings.image != blank -%}
+            {{
+            section.settings.image
+            | image_url: width: 600
+            | image_tag: loading: 'lazy', widths: '165, 360, 535, 750, 1070, 1500'
+            }}
+        {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+    </div>
+    <div class="timeline__content">
+        <h2 class="timeline__title">{{ section.settings.title }}</h2>
+        <div class="timeline__subtitle">{{ section.settings.subtitle }}</div>
+        <ul class="timeline__list">
+            <li class="timeline__line"></li>
+            <li class="timeline__bullet"></li>
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'timeline_item' -%}
+                        {% assign item = block.settings %}
+                        <li class="timeline__item" {{ block.shopify_attributes }}>
+                            <span class="bordered"></span>
+                            <span class="circle"></span>
+                            <div class="item">
+                                <h3 class="title">{{ item.title }}</h3>
+                                <div class="content">
+                                    {{ item.content }}
+                                </div>
+                            </div>
+                        </li>
+                {% endcase %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Timeline section",
+  "tag": "section",
+  "class": "timeline",
+  "limit": 1,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "What sets us apart"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "timeline_item",
+      "name": "Timeline item",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title for item"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Subtitle for item"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline section"
+    }
+  ]
+}
+{% endschema %}

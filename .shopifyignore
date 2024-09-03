@@ -1,2 +1,5 @@
 assets/*.scss
 assets/block-related-products.scss
+assets/timeline-section.scss
+package.json
+package-lock.json

@@ -1,0 +1,184 @@
+.timeline {
+  --brand-color: #00026E;
+  --text-color: #292929;
+  color: var(--text-color);
+}
+.timeline__wrapper {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 100%;
+  align-items: start;
+}
+@media screen and (min-width: 768px) {
+  .timeline__wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .timeline__wrapper {
+    grid-template-columns: 500px 1fr;
+    gap: 60px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .timeline__wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 768px) {
+  .timeline__image {
+    position: sticky;
+    top: 250px;
+    left: 0;
+  }
+}
+.timeline__image img {
+  max-width: 100%;
+  height: auto;
+}
+.timeline__title {
+  font-size: 24px;
+  letter-spacing: -2%;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--brand-color);
+}
+@media screen and (min-width: 1024px) {
+  .timeline__title {
+    font-size: 34px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .timeline__title {
+    font-size: 46px;
+  }
+}
+.timeline__subtitle {
+  font-size: 17px;
+  margin-bottom: 45px;
+}
+@media screen and (min-width: 1024px) {
+  .timeline__subtitle {
+    font-size: 19px;
+  }
+}
+.timeline__content h2, .timeline__content h3, .timeline__content h4, .timeline__content h5, .timeline__content h6 {
+  font-family: "Athletics", sans-serif;
+  line-height: 1.2;
+  color: var(--brand-color);
+}
+.timeline__content p, .timeline__content li, .timeline__content span {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+@media screen and (min-width: 1024px) {
+  .timeline__content p, .timeline__content li, .timeline__content span {
+    font-size: 16px;
+  }
+}
+.timeline__line {
+  position: absolute;
+  left: 6px;
+  height: 0;
+  width: 2px;
+  background-color: rgb(179, 187, 209);
+}
+.timeline__list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+.timeline__item {
+  padding-inline: 40px 20px;
+  position: relative;
+  max-width: 442px;
+  opacity: 0.2;
+  transition: opacity 0.4s linear;
+  box-sizing: border-box !important;
+  margin-bottom: 32px;
+}
+@media screen and (min-width: 992px) {
+  .timeline__item {
+    margin-bottom: 56px;
+  }
+}
+.timeline__item .item {
+  transform: translateY(-5px);
+}
+.timeline__item .bordered {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgb(206, 213, 225);
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+  z-index: 11;
+  transition: opacity 0.4s linear;
+  box-sizing: content-box !important;
+  opacity: 0;
+}
+.timeline__item .circle {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(20, 43, 111);
+  border: 2px solid rgb(20, 43, 111);
+  border-radius: 13px;
+  z-index: 12;
+  opacity: 0;
+  transition: opacity 0.4s linear;
+  box-sizing: content-box !important;
+}
+.timeline__item.visible .bordered {
+  opacity: 1;
+}
+.timeline__item.visible .circle {
+  opacity: 1;
+}
+.timeline__item .title {
+  margin-bottom: 12px;
+  margin-top: 0;
+  font-size: 18px;
+  font-family: "Athletics", sans-serif;
+}
+@media screen and (min-width: 1024px) {
+  .timeline__item .title {
+    font-size: 24px;
+  }
+}
+.timeline__item .title p {
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+.timeline__item .content p {
+  margin: 0;
+  font-size: inherit;
+}
+.timeline__bullet {
+  position: absolute;
+  left: 3px;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  border: 2px solid rgb(179, 187, 209);
+  background-color: rgb(179, 187, 209);
+  border-radius: 18px;
+  z-index: 11;
+  box-sizing: content-box !important;
+  opacity: 0;
+  transition: opacity 0.4s linear;
+}
+.timeline__bullet.visible {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=timeline-section.css.map */

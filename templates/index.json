@@ -51,6 +51,52 @@
         "show_text_below": true
       }
     },
+    "timeline_section_38Bxz7": {
+      "type": "timeline-section",
+      "blocks": {
+        "timeline_item_iQCXGL": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>Acid-resistant strains<\/p>",
+            "content": "<p>100% survival through simulated digestion* (stomach acid, bile salts, and digestive enzymes)<\/p>"
+          }
+        },
+        "timeline_item_b7geCm": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>Delayed-release capsule<\/p>",
+            "content": "<p>Delayed-release capsule and acid-resistant strains guarantee the majority of the bacteria reach your colon, alive and active, ready to get to work.<\/p>"
+          }
+        },
+        "timeline_item_6dXQ8Y": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>Third-party tested<\/p>",
+            "content": "<p>Delayed-release capsule and acid-resistant strains guarantee the majority of the bacteria reach your colon, alive and active, ready to get to work.<\/p>"
+          }
+        },
+        "timeline_item_CeGTfD": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>High-quality ingredients<\/p>",
+            "content": "<p>Delayed-release capsule and acid-resistant strains guarantee the majority of the bacteria reach your colon, alive and active, ready to get to work.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_item_iQCXGL",
+        "timeline_item_b7geCm",
+        "timeline_item_6dXQ8Y",
+        "timeline_item_CeGTfD"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20220923_Heights_00726_copy_1.png",
+        "title": "What sets us apart",
+        "subtitle": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.<\/p>",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -159,6 +205,7 @@
   },
   "order": [
     "6a3bb789-ce10-45f5-ae67-e2063ef8c76b",
+    "timeline_section_38Bxz7",
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
     "38cdf60f-e431-43b5-aac3-7e6215447d67"
