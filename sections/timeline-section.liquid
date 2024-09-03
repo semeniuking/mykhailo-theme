@@ -46,8 +46,19 @@
         {%- endif -%}
     </div>
     <div class="timeline__content">
-        <h2 class="timeline__title">{{ section.settings.title | escape }}</h2>
-        <div class="timeline__subtitle">{{ section.settings.subtitle | escape }}</div>
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'title' -%}
+                    <h2 class="timeline__title" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
+                {%- when 'subtitle' -%}
+                    {%- if block.settings.subtitle != blank -%}
+                        <div class="timeline__subtitle" {{ block.shopify_attributes }}>
+                            {{ block.settings.subtitle }}
+                        </div>
+                    {%- endif -%}
+            {% endcase %}
+        {% endfor %}
+
         <ul class="timeline__list">
             <li class="timeline__line"></li>
             <li class="timeline__bullet"></li>
@@ -59,10 +70,14 @@
                             <span class="bordered"></span>
                             <span class="circle"></span>
                             <div class="item">
-                                <h3 class="title">{{ item.title | escape }}</h3>
-                                <div class="content">
-                                    {{ item.content | escape }}
-                                </div>
+                                {%- if block.settings.title != blank -%}
+                                    <h3 class="title">{{ item.title }}</h3>
+                                {%- endif -%}
+                                {%- if block.settings.content != blank -%}
+                                    <div class="content">
+                                        {{ item.content }}
+                                    </div>
+                                {%- endif -%}
                             </div>
                         </li>
                 {% endcase %}
@@ -90,18 +105,6 @@
       "label": "Main image"
     },
     {
-      "type": "text",
-      "id": "title",
-      "label": "Section title",
-      "default": "What sets us apart"
-    },
-    {
-      "type": "richtext",
-      "id": "subtitle",
-      "label": "Section subtitle",
-      "default": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.</p>"
-    },
-    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
@@ -123,6 +126,32 @@
     }
   ],
   "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section title",
+          "default": "What sets us apart"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "Section subtitle",
+          "default": "<p>Our supplements are packed with the most effective ingredients out there, and nothing else.</p>"
+        }
+      ]
+    },
     {
       "type": "timeline_item",
       "name": "Timeline item",
