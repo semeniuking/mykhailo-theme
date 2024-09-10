@@ -102,6 +102,20 @@
             "title": "<p>High-quality ingredients<\/p>",
             "content": "<p>Delayed-release capsule and acid-resistant strains guarantee the majority of the bacteria reach your colon, alive and active, ready to get to work.<\/p>"
           }
+        },
+        "timeline_item_AxEHMj": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>Test<\/p>",
+            "content": "<p>Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test a Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test a Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test a Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test a<\/p>"
+          }
+        },
+        "timeline_item_FDhNMn": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "<p>High-quality ingredients<\/p>",
+            "content": "<p>Delayed-release capsule and acid-resistant strains guarantee the majority of the bacteria reach your colon, alive and active, ready to get to work.<\/p>"
+          }
         }
       },
       "block_order": [
@@ -110,11 +124,13 @@
         "timeline_item_iQCXGL",
         "timeline_item_b7geCm",
         "timeline_item_6dXQ8Y",
-        "timeline_item_CeGTfD"
+        "timeline_item_CeGTfD",
+        "timeline_item_AxEHMj",
+        "timeline_item_FDhNMn"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/20220923_Heights_00726_copy_1.png",
-        "padding_top": 172,
+        "padding_top": 60,
         "padding_bottom": 60
       }
     },
